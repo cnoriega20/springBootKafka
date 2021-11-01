@@ -1,9 +1,10 @@
 package com.springboot.kafka.trn.controller;
 
 import com.springboot.kafka.trn.consumer.KafkaProducerService;
-import org.springframework.web.bind.annotation.GetMapping;
+import com.springboot.kafka.trn.model.Employee;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -15,8 +16,8 @@ public class KafkaProducerController {
         this.producerService = producerService;
     }
 
-    @GetMapping(value = "/publishToTopic")
-    public void sendToKafkaTopic(@RequestParam("message") String message){
-        producerService.sendMessage(message);
+    @PostMapping(value = "/publishToTopic")
+    public void sendToKafkaTopic(@RequestBody Employee employee){
+        producerService.sendMessage(employee);
     }
 }

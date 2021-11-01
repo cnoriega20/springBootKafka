@@ -3,16 +3,18 @@ server:
 spring:
   application: springBootKafka
   kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-serializer: com.springboot.kafka.trn.customserdes.CustomSerializer
+
     consumer:
       bootstrap-servers: localhost:9092
       group-id: kafka001
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-    producer:
-      bootstrap-servers: localhost:9092
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: com.springboot.kafka.trn.customserdes.CustomDeserializer
+
 
 
 springBootKafka:
