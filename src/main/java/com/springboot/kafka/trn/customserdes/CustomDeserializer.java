@@ -25,7 +25,7 @@ public class CustomDeserializer implements Deserializer<Employee> {
                 return null;
             }
             log.info("Deserializing...");
-            return objectMapper.readValue(new String(data, "UTF-8"), Employee.class);
+            return objectMapper.readValue(data, Employee.class);
         } catch (Exception e) {
             throw new SerializationException("Error when deserializing byte[] to MessageDto");
         }
