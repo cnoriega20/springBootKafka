@@ -1,0 +1,22 @@
+server:
+  port: 9090
+spring:
+  application: springBootKafka
+  kafka:
+    producer:
+      bootstrap-servers: ${spring.embedded.kafka.brokers}
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: com.springboot.kafka.trn.customserdes.CustomSerializer
+
+    consumer:
+      bootstrap-servers: ${spring.embedded.kafka.brokers}
+      group-id: kafka001
+      auto-offset-reset: latest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: com.springboot.kafka.trn.customserdes.CustomDeserializer
+
+
+
+springBootKafka:
+  kafka:
+    topic: firstKafkaTopic
